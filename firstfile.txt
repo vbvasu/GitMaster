@@ -4,3 +4,5 @@ text
 file
 basic
 commands
+snbn
+smcxn
