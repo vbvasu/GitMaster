@@ -438,3 +438,988 @@ Your branch is up to date with 'origin/master'.
 PS D:\Git> git branch       
   child1
 * master
+PS D:\GitLocalRepo> ls
+
+    Directory: D:\GitLocalRepo
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          28-09-2022    09:38          17041 commands
+-a---          28-09-2022    09:37             40 firstfile.txt
+
+PS D:\GitLocalRepo> ls -a
+Get-ChildItem: Parameter cannot be processed because the parameter name 'a' is ambiguous. Possible matches include: -Attributes -Directory -File -Hidden -ReadOnly -System.
+PS D:\GitLocalRepo> ls -Hidden
+
+    Directory: D:\GitLocalRepo
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d--h-          28-09-2022    09:39                .git
+
+PS D:\GitLocalRepo> cat .git
+Get-Content: Unable to get content because it is a directory: 'D:\GitLocalRepo\.git'. Please use 'Get-ChildItem' instead.
+PS D:\GitLocalRepo> Get-ChildItem .git
+
+    Directory: D:\GitLocalRepo\.git
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          28-09-2022    09:31                hooks
+d----          28-09-2022    09:31                info
+d----          28-09-2022    09:35                logs
+d----          28-09-2022    09:31                objects
+d----          28-09-2022    09:36                refs
+-a---          28-09-2022    09:39             13 COMMIT_EDITMSG
+-a---          28-09-2022    09:39            352 config
+-a---          28-09-2022    09:31             73 description
+-a---          28-09-2022    09:31             23 HEAD
+-a---          28-09-2022    09:39            217 index
+
+PS D:\GitLocalRepo> Get-ChildItem HEAD
+Get-ChildItem: Cannot find path 'D:\GitLocalRepo\HEAD' because it does not exist.
+PS D:\GitLocalRepo> Get-ChildItem logs
+Get-ChildItem: Cannot find path 'D:\GitLocalRepo\logs' because it does not exist.
+PS D:\GitLocalRepo> git status      
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   testvscode
+
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        testvscode
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   testvscode
+
+PS D:\GitLocalRepo> git branch
+  child1
+* master
+PS D:\GitLocalRepo> git config --global user.name "vbvasu"
+PS D:\GitLocalRepo> git config --list                     
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager-core
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+credential.https://git-codecommit.us-east-1.amazonaws.com.provider=generic
+user.email=Vb.Vasu@lntinfotech.com
+user.name=vbvasu
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+PS D:\GitLocalRepo> git remote -v                         
+origin  https://github.com/vbvasu/GitMaster.git (fetch)
+origin  https://github.com/vbvasu/GitMaster.git (push)
+PS D:\GitLocalRepo> git log
+commit 6025f851390ad23f4d5017d8178255306a288785 (HEAD -> master, origin/master, origin/child1, child1)
+Author: vasu <vbvasu1230@gmail.com>
+Date:   Wed Sep 28 09:55:55 2022 +0530
+
+    newvscodetrcik
+
+commit 7bcf47c74dc800620ec94fcbe676b7046b6bc6d9
+Author: vasu <vbvasu1230@gmail.com>
+Date:   Wed Sep 28 09:53:25 2022 +0530
+
+    jwedb
+
+commit cdec9a1805b10a7c7aaca28689948abe597dab6a
+Author: vasu <vbvasu1230@gmail.com>
+Date:   Wed Sep 28 09:39:34 2022 +0530
+
+    commandsfile
+
+commit 03453b6fe9d70afc549e8704ac56d39beeb73d33
+Author: vasu <vbvasu1230@gmail.com>
+Date:   Wed Sep 28 09:37:55 2022 +0530
+
+PS D:\GitLocalRepo> git checkout 6025f851390ad23f4d5017d8178255306a288785
+Note: switching to '6025f851390ad23f4d5017d8178255306a288785'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 6025f85 newvscodetrcik
+PS D:\GitLocalRepo> git status
+HEAD detached at 6025f85
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git clean
+fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; refusing to clean
+PS D:\GitLocalRepo> git branch
+* (HEAD detached at 6025f85)
+  child1
+  master
+PS D:\GitLocalRepo> git checkout master                                  
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commitcheck
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   commitcheck
+
+PS D:\GitLocalRepo> git commit -m "New File"
+[master 18eb814] New File
+ 1 file changed, 5 insertions(+)
+ create mode 100644 commitcheck
+PS D:\GitLocalRepo> git branch
+  child1
+* master
+PS D:\GitLocalRepo> git checkout child1
+Switched to branch 'child1'
+Your branch is up to date with 'origin/child1'.
+PS D:\GitLocalRepo> git pull origin master
+From https://github.com/vbvasu/GitMaster
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+PS D:\GitLocalRepo> git branch            
+* child1
+  master
+PS D:\GitLocalRepo> git merge master
+Updating 6025f85..18eb814
+Fast-forward
+ commitcheck | 5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 commitcheck
+PS D:\GitLocalRepo> git status
+On branch child1
+Your branch is ahead of 'origin/child1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   commitcheck
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git commit -m "chnage of commitcheckfile"
+[child1 7d7db93] chnage of commitcheckfile
+ 1 file changed, 4 insertions(+)
+PS D:\GitLocalRepo> git status
+On branch child1
+Your branch is ahead of 'origin/child1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git commit -m "chnage of commitcheckfile"
+On branch child1
+Your branch is ahead of 'origin/child1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git commit -m "chnage of commitcheckfilewsdc"
+On branch child1
+Your branch is ahead of 'origin/child1' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git branch
+  child1
+* master
+PS D:\GitLocalRepo> git push -u origin master
+To https://github.com/vbvasu/GitMaster.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/vbvasu/GitMaster.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS D:\GitLocalRepo> git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 665 bytes | 8.00 KiB/s, done.
+From https://github.com/vbvasu/GitMaster
+   6025f85..62d4488  master     -> origin/master
+Merge made by the 'ort' strategy.
+ testvscode | 3 +++
+ 1 file changed, 3 insertions(+)
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git staus
+git: 'staus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git commit -m "ne commit"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git push -u origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 620 bytes | 620.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/vbvasu/GitMaster.git
+   62d4488..1c8919b  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git branch
+  child1
+* master
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   testvscode
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS D:\GitLocalRepo> git diff
+diff --git a/testvscode b/testvscode
+index 366df7a..55f5a0e 100644
+--- a/testvscode
++++ b/testvscode
+@@ -4,3 +4,6 @@ snbcx
+ wsjdn
+ wsdbnc
+ sxnc
++sndsv
++sdmnf
++git 
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   testvscode
+
+PS D:\GitLocalRepo> git commit -m "nbxcd"
+[master 684df07] nbxcd
+ 1 file changed, 3 insertions(+)
+PS D:\GitLocalRepo> git diff --staged
+PS D:\GitLocalRepo> git push -u origin master
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 292 bytes | 292.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/vbvasu/GitMaster.git
+   1c8919b..684df07  master -> master
+branch 'master' set up to track 'origin/master'.
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   commitcheck
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   commitcheck
+
+PS D:\GitLocalRepo> git add .
+PS D:\GitLocalRepo> git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git commit -m "commit check"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+PS D:\GitLocalRepo> git push -u origin master
+Everything up-to-date
+branch 'master' set up to track 'origin/master'.
+PS D:\GitLocalRepo> git checkout child1
+Switched to branch 'child1'
+Your branch is ahead of 'origin/child1' by 2 commits.
+  (use "git push" to publish your local commits)
+PS D:\GitLocalRepo> git log --all --decorate --graph --oneline
+* 684df07 (origin/master, master) nbxcd
+*   1c8919b Merge branch 'master' of https://github.com/vbvasu/GitMaster
+|\
+| * 62d4488 Update testvscode
+| | * 7d7db93 (HEAD -> child1) chnage of commitcheckfile
+| |/
+|/|
+* | 18eb814 New File
+|/
+* 6025f85 (origin/child1) newvscodetrcik
+* 7bcf47c jwedb
+* cdec9a1 commandsfile
+* 03453b6 modified
+* bca3b0a firstcommit esfd
+PS D:\GitLocalRepo> alias --help
+Get-Alias: This command cannot find a matching alias because an alias with the name '--help' does not exist.
+PS D:\GitLocalRepo> Set-Alias graph="git log --all --decorate --oneline --graph"
+
+cmdlet Set-Alias at command pipeline position 1
+Supply values for the following parameters:
+Value: jm
+PS D:\GitLocalRepo> graph
+graph: The term 'graph' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> graph="git log --all --decorate --oneline --graph"
+graph=git log --all --decorate --oneline --graph: The term 'jm' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> printenv
+printenv: The term 'printenv' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> Get-Alias
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           ? -> Where-Object
+Alias           % -> ForEach-Object
+Alias           ac -> Add-Content
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           chdir -> Set-Location
+Alias           clc -> Clear-Content
+Alias           clear -> Clear-Host
+Alias           clhy -> Clear-History
+Alias           cli -> Clear-Item
+Alias           clp -> Clear-ItemProperty
+Alias           cls -> Clear-Host
+Alias           clv -> Clear-Variable
+Alias           cnsn -> Connect-PSSession
+Alias           compare -> Compare-Object
+Alias           copy -> Copy-Item
+Alias           cp -> Copy-Item
+Alias           cpi -> Copy-Item
+Alias           cpp -> Copy-ItemProperty
+Alias           cvpa -> Convert-Path
+Alias           dbp -> Disable-PSBreakpoint
+Alias           del -> Remove-Item
+Alias           diff -> Compare-Object
+Alias           dir -> Get-ChildItem
+Alias           dnsn -> Disconnect-PSSession
+Alias           ebp -> Enable-PSBreakpoint
+Alias           echo -> Write-Output
+Alias           epal -> Export-Alias
+Alias           epcsv -> Export-Csv
+Alias           erase -> Remove-Item
+Alias           etsn -> Enter-PSSession
+Alias           exsn -> Exit-PSSession
+Alias           fc -> Format-Custom
+Alias           fhx -> Format-Hex                                  7.0.0.0    Microsoft.PowerShell.Utility
+Alias           fl -> Format-List
+Alias           foreach -> ForEach-Object
+Alias           ft -> Format-Table
+Alias           fw -> Format-Wide
+Alias           gal -> Get-Alias
+Alias           gbp -> Get-PSBreakpoint
+Alias           gc -> Get-Content
+Alias           gcb -> Get-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           gci -> Get-ChildItem
+Alias           gcm -> Get-Command
+Alias           gcs -> Get-PSCallStack
+Alias           gdr -> Get-PSDrive
+Alias           gerr -> Get-Error
+Alias           ghy -> Get-History
+Alias           gi -> Get-Item
+Alias           gin -> Get-ComputerInfo                            7.0.0.0    Microsoft.PowerShell.Management
+Alias           gjb -> Get-Job
+Alias           gl -> Get-Location
+Alias           gm -> Get-Member
+Alias           gmo -> Get-Module
+Alias           gp -> Get-ItemProperty
+Alias           gps -> Get-Process
+Alias           gpv -> Get-ItemPropertyValue
+Alias           graph=git log --all --decorate --oneline --graph
+Alias           group -> Group-Object
+Alias           gsn -> Get-PSSession
+Alias           gsv -> Get-Service
+Alias           gtz -> Get-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           gu -> Get-Unique
+Alias           gv -> Get-Variable
+Alias           h -> Get-History
+Alias           history -> Get-History
+Alias           icm -> Invoke-Command
+Alias           iex -> Invoke-Expression
+Alias           ihy -> Invoke-History
+Alias           ii -> Invoke-Item
+Alias           ipal -> Import-Alias
+Alias           ipcsv -> Import-Csv
+Alias           ipmo -> Import-Module
+Alias           irm -> Invoke-RestMethod
+Alias           iwr -> Invoke-WebRequest
+Alias           kill -> Stop-Process
+Alias           ls -> Get-ChildItem
+Alias           man -> help
+Alias           md -> mkdir
+Alias           measure -> Measure-Object
+Alias           mi -> Move-Item
+Alias           mount -> New-PSDrive
+Alias           move -> Move-Item
+Alias           mp -> Move-ItemProperty
+Alias           mv -> Move-Item
+Alias           nal -> New-Alias
+Alias           ndr -> New-PSDrive
+Alias           ni -> New-Item
+Alias           nmo -> New-Module
+Alias           nsn -> New-PSSession
+Alias           nv -> New-Variable
+Alias           ogv -> Out-GridView
+Alias           oh -> Out-Host
+Alias           popd -> Pop-Location
+Alias           ps -> Get-Process
+Alias           pushd -> Push-Location
+Alias           pwd -> Get-Location
+Alias           r -> Invoke-History
+Alias           rbp -> Remove-PSBreakpoint
+Alias           rcjb -> Receive-Job
+Alias           rcsn -> Receive-PSSession
+Alias           rd -> Remove-Item
+Alias           rdr -> Remove-PSDrive
+Alias           ren -> Rename-Item
+Alias           ri -> Remove-Item
+Alias           rjb -> Remove-Job
+Alias           rm -> Remove-Item
+Alias           rmdir -> Remove-Item
+Alias           rmo -> Remove-Module
+Alias           rni -> Rename-Item
+Alias           rnp -> Rename-ItemProperty
+Alias           rp -> Remove-ItemProperty
+Alias           rsn -> Remove-PSSession
+Alias           rv -> Remove-Variable
+Alias           rvpa -> Resolve-Path
+Alias           sajb -> Start-Job
+Alias           sal -> Set-Alias
+Alias           saps -> Start-Process
+Alias           sasv -> Start-Service
+Alias           sbp -> Set-PSBreakpoint
+Alias           scb -> Set-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           select -> Select-Object
+Alias           set -> Set-Variable
+Alias           shcm -> Show-Command
+Alias           si -> Set-Item
+Alias           sl -> Set-Location
+Alias           sleep -> Start-Sleep
+Alias           sls -> Select-String
+Alias           sort -> Sort-Object
+Alias           sp -> Set-ItemProperty
+Alias           spjb -> Stop-Job
+Alias           spps -> Stop-Process
+Alias           spsv -> Stop-Service
+Alias           start -> Start-Process
+Alias           stz -> Set-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           sv -> Set-Variable
+Alias           tee -> Tee-Object
+Alias           type -> Get-Content
+Alias           where -> Where-Object
+Alias           wjb -> Wait-Job
+Alias           write -> Write-Output
+
+PS D:\GitLocalRepo> Set-Alias -Name graph -Value git log --all --decorative --oneline --graph
+Set-Alias: A positional parameter cannot be found that accepts argument 'log'.
+PS D:\GitLocalRepo> Set-Alias -Name graph -Value "git log --all --decorative --oneline --graph"
+PS D:\GitLocalRepo> graph
+graph: The term 'git log --all --decorative --oneline --graph' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> Set-Alias -Name graph -Value "git log --all --decorate --oneline --graph"  
+PS D:\GitLocalRepo> graph
+graph: The term 'git log --all --decorate --oneline --graph' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> Set-Alias -Name graph -Value "git log --all --decorate --graph --oneline"
+PS D:\GitLocalRepo> graph
+graph: The term 'git log --all --decorate --graph --oneline' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+PS D:\GitLocalRepo> Get-Alias
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           ? -> Where-Object
+Alias           % -> ForEach-Object
+Alias           ac -> Add-Content
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           chdir -> Set-Location
+Alias           clc -> Clear-Content
+Alias           clear -> Clear-Host
+Alias           clhy -> Clear-History
+Alias           cli -> Clear-Item
+Alias           clp -> Clear-ItemProperty
+Alias           cls -> Clear-Host
+Alias           clv -> Clear-Variable
+Alias           cnsn -> Connect-PSSession
+Alias           compare -> Compare-Object
+Alias           copy -> Copy-Item
+Alias           cp -> Copy-Item
+Alias           cpi -> Copy-Item
+Alias           cpp -> Copy-ItemProperty
+Alias           cvpa -> Convert-Path
+Alias           dbp -> Disable-PSBreakpoint
+Alias           del -> Remove-Item
+Alias           diff -> Compare-Object
+Alias           dir -> Get-ChildItem
+Alias           dnsn -> Disconnect-PSSession
+Alias           ebp -> Enable-PSBreakpoint
+Alias           echo -> Write-Output
+Alias           epal -> Export-Alias
+Alias           epcsv -> Export-Csv
+Alias           erase -> Remove-Item
+Alias           etsn -> Enter-PSSession
+Alias           exsn -> Exit-PSSession
+Alias           fc -> Format-Custom
+Alias           fhx -> Format-Hex                                  7.0.0.0    Microsoft.PowerShell.Utility
+Alias           fl -> Format-List
+Alias           foreach -> ForEach-Object
+Alias           ft -> Format-Table
+Alias           fw -> Format-Wide
+Alias           gal -> Get-Alias
+Alias           gbp -> Get-PSBreakpoint
+Alias           gc -> Get-Content
+Alias           gcb -> Get-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           gci -> Get-ChildItem
+Alias           gcm -> Get-Command
+Alias           gcs -> Get-PSCallStack
+Alias           gdr -> Get-PSDrive
+Alias           gerr -> Get-Error
+Alias           ghy -> Get-History
+Alias           gi -> Get-Item
+Alias           gin -> Get-ComputerInfo                            7.0.0.0    Microsoft.PowerShell.Management
+Alias           gjb -> Get-Job
+Alias           gl -> Get-Location
+Alias           gm -> Get-Member
+Alias           gmo -> Get-Module
+Alias           gp -> Get-ItemProperty
+Alias           gps -> Get-Process
+Alias           gpv -> Get-ItemPropertyValue
+Alias           graph -> git log --all --decorate --graph --oneli…
+Alias           graph=git log --all --decorate --oneline --graph
+Alias           group -> Group-Object
+Alias           gsn -> Get-PSSession
+Alias           gsv -> Get-Service
+Alias           gtz -> Get-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           gu -> Get-Unique
+Alias           gv -> Get-Variable
+Alias           h -> Get-History
+Alias           history -> Get-History
+Alias           icm -> Invoke-Command
+Alias           iex -> Invoke-Expression
+Alias           ihy -> Invoke-History
+Alias           ii -> Invoke-Item
+Alias           ipal -> Import-Alias
+Alias           ipcsv -> Import-Csv
+Alias           ipmo -> Import-Module
+Alias           irm -> Invoke-RestMethod
+Alias           iwr -> Invoke-WebRequest
+Alias           kill -> Stop-Process
+Alias           ls -> Get-ChildItem
+Alias           man -> help
+Alias           md -> mkdir
+Alias           measure -> Measure-Object
+Alias           mi -> Move-Item
+Alias           mount -> New-PSDrive
+Alias           move -> Move-Item
+Alias           mp -> Move-ItemProperty
+Alias           mv -> Move-Item
+Alias           nal -> New-Alias
+Alias           ndr -> New-PSDrive
+Alias           ni -> New-Item
+Alias           nmo -> New-Module
+Alias           nsn -> New-PSSession
+Alias           nv -> New-Variable
+Alias           ogv -> Out-GridView
+Alias           oh -> Out-Host
+Alias           popd -> Pop-Location
+Alias           ps -> Get-Process
+Alias           pushd -> Push-Location
+Alias           pwd -> Get-Location
+Alias           r -> Invoke-History
+Alias           rbp -> Remove-PSBreakpoint
+Alias           rcjb -> Receive-Job
+Alias           rcsn -> Receive-PSSession
+Alias           rd -> Remove-Item
+Alias           rdr -> Remove-PSDrive
+Alias           ren -> Rename-Item
+Alias           ri -> Remove-Item
+Alias           rjb -> Remove-Job
+Alias           rm -> Remove-Item
+Alias           rmdir -> Remove-Item
+Alias           rmo -> Remove-Module
+Alias           rni -> Rename-Item
+Alias           rnp -> Rename-ItemProperty
+Alias           rp -> Remove-ItemProperty
+Alias           rsn -> Remove-PSSession
+Alias           rv -> Remove-Variable
+Alias           rvpa -> Resolve-Path
+Alias           sajb -> Start-Job
+Alias           sal -> Set-Alias
+Alias           saps -> Start-Process
+Alias           sasv -> Start-Service
+Alias           sbp -> Set-PSBreakpoint
+Alias           scb -> Set-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           select -> Select-Object
+Alias           set -> Set-Variable
+Alias           shcm -> Show-Command
+Alias           si -> Set-Item
+Alias           sl -> Set-Location
+Alias           sleep -> Start-Sleep
+Alias           sls -> Select-String
+Alias           sort -> Sort-Object
+Alias           sp -> Set-ItemProperty
+Alias           spjb -> Stop-Job
+Alias           spps -> Stop-Process
+Alias           spsv -> Stop-Service
+Alias           start -> Start-Process
+Alias           stz -> Set-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           sv -> Set-Variable
+Alias           tee -> Tee-Object
+Alias           type -> Get-Content
+Alias           where -> Where-Object
+Alias           wjb -> Wait-Job
+Alias           write -> Write-Output
+
+PS D:\GitLocalRepo> Remove-Alias graph        
+PS D:\GitLocalRepo> Get-Alias
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           ? -> Where-Object
+Alias           % -> ForEach-Object
+Alias           ac -> Add-Content
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           chdir -> Set-Location
+Alias           clc -> Clear-Content
+Alias           clear -> Clear-Host
+Alias           clhy -> Clear-History
+Alias           cli -> Clear-Item
+Alias           clp -> Clear-ItemProperty
+Alias           cls -> Clear-Host
+Alias           clv -> Clear-Variable
+Alias           cnsn -> Connect-PSSession
+Alias           compare -> Compare-Object
+Alias           copy -> Copy-Item
+Alias           cp -> Copy-Item
+Alias           cpi -> Copy-Item
+Alias           cpp -> Copy-ItemProperty
+Alias           cvpa -> Convert-Path
+Alias           dbp -> Disable-PSBreakpoint
+Alias           del -> Remove-Item
+Alias           diff -> Compare-Object
+Alias           dir -> Get-ChildItem
+Alias           dnsn -> Disconnect-PSSession
+Alias           ebp -> Enable-PSBreakpoint
+Alias           echo -> Write-Output
+Alias           epal -> Export-Alias
+Alias           epcsv -> Export-Csv
+Alias           erase -> Remove-Item
+Alias           etsn -> Enter-PSSession
+Alias           exsn -> Exit-PSSession
+Alias           fc -> Format-Custom
+Alias           fhx -> Format-Hex                                  7.0.0.0    Microsoft.PowerShell.Utility
+Alias           fl -> Format-List
+Alias           foreach -> ForEach-Object
+Alias           ft -> Format-Table
+Alias           fw -> Format-Wide
+Alias           gal -> Get-Alias
+Alias           gbp -> Get-PSBreakpoint
+Alias           gc -> Get-Content
+Alias           gcb -> Get-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           gci -> Get-ChildItem
+Alias           gcm -> Get-Command
+Alias           gcs -> Get-PSCallStack
+Alias           gdr -> Get-PSDrive
+Alias           gerr -> Get-Error
+Alias           ghy -> Get-History
+Alias           gi -> Get-Item
+Alias           gin -> Get-ComputerInfo                            7.0.0.0    Microsoft.PowerShell.Management
+Alias           gjb -> Get-Job
+Alias           gl -> Get-Location
+Alias           gm -> Get-Member
+Alias           gmo -> Get-Module
+Alias           gp -> Get-ItemProperty
+Alias           gps -> Get-Process
+Alias           gpv -> Get-ItemPropertyValue
+Alias           graph=git log --all --decorate --oneline --graph
+Alias           group -> Group-Object
+Alias           gsn -> Get-PSSession
+Alias           gsv -> Get-Service
+Alias           gtz -> Get-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           gu -> Get-Unique
+Alias           gv -> Get-Variable
+Alias           h -> Get-History
+Alias           history -> Get-History
+Alias           icm -> Invoke-Command
+Alias           iex -> Invoke-Expression
+Alias           ihy -> Invoke-History
+Alias           ii -> Invoke-Item
+Alias           ipal -> Import-Alias
+Alias           ipcsv -> Import-Csv
+Alias           ipmo -> Import-Module
+Alias           irm -> Invoke-RestMethod
+Alias           iwr -> Invoke-WebRequest
+Alias           kill -> Stop-Process
+Alias           ls -> Get-ChildItem
+Alias           man -> help
+Alias           md -> mkdir
+Alias           measure -> Measure-Object
+Alias           mi -> Move-Item
+Alias           mount -> New-PSDrive
+Alias           move -> Move-Item
+Alias           mp -> Move-ItemProperty
+Alias           mv -> Move-Item
+Alias           nal -> New-Alias
+Alias           ndr -> New-PSDrive
+Alias           ni -> New-Item
+Alias           nmo -> New-Module
+Alias           nsn -> New-PSSession
+Alias           nv -> New-Variable
+Alias           ogv -> Out-GridView
+Alias           oh -> Out-Host
+Alias           popd -> Pop-Location
+Alias           ps -> Get-Process
+Alias           pushd -> Push-Location
+Alias           pwd -> Get-Location
+Alias           r -> Invoke-History
+Alias           rbp -> Remove-PSBreakpoint
+Alias           rcjb -> Receive-Job
+Alias           rcsn -> Receive-PSSession
+Alias           rd -> Remove-Item
+Alias           rdr -> Remove-PSDrive
+Alias           ren -> Rename-Item
+Alias           ri -> Remove-Item
+Alias           rjb -> Remove-Job
+Alias           rm -> Remove-Item
+Alias           rmdir -> Remove-Item
+Alias           rmo -> Remove-Module
+Alias           rni -> Rename-Item
+Alias           rnp -> Rename-ItemProperty
+Alias           rp -> Remove-ItemProperty
+Alias           rsn -> Remove-PSSession
+Alias           rv -> Remove-Variable
+Alias           rvpa -> Resolve-Path
+Alias           sajb -> Start-Job
+Alias           sal -> Set-Alias
+Alias           saps -> Start-Process
+Alias           sasv -> Start-Service
+Alias           sbp -> Set-PSBreakpoint
+Alias           scb -> Set-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           select -> Select-Object
+Alias           set -> Set-Variable
+Alias           shcm -> Show-Command
+Alias           si -> Set-Item
+Alias           sl -> Set-Location
+Alias           sleep -> Start-Sleep
+Alias           sls -> Select-String
+Alias           sort -> Sort-Object
+Alias           sp -> Set-ItemProperty
+Alias           spjb -> Stop-Job
+Alias           spps -> Stop-Process
+Alias           spsv -> Stop-Service
+Alias           start -> Start-Process
+Alias           stz -> Set-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           sv -> Set-Variable
+Alias           tee -> Tee-Object
+Alias           type -> Get-Content
+Alias           where -> Where-Object
+Alias           wjb -> Wait-Job
+Alias           write -> Write-Output
+
+PS D:\GitLocalRepo> Remove-Alias graph=git log --all --decorate --oneline --graph
+Remove-Alias: A positional parameter cannot be found that accepts argument 'log'.
+PS D:\GitLocalRepo> Remove-Alias "graph=git log --all --decorate --oneline --graph"
+PS D:\GitLocalRepo> Get-Alias                                                      
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           ? -> Where-Object
+Alias           % -> ForEach-Object
+Alias           ac -> Add-Content
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           chdir -> Set-Location
+Alias           clc -> Clear-Content
+Alias           clear -> Clear-Host
+Alias           clhy -> Clear-History
+Alias           cli -> Clear-Item
+Alias           clp -> Clear-ItemProperty
+Alias           cls -> Clear-Host
+Alias           clv -> Clear-Variable
+Alias           cnsn -> Connect-PSSession
+Alias           compare -> Compare-Object
+Alias           copy -> Copy-Item
+Alias           cp -> Copy-Item
+Alias           cpi -> Copy-Item
+Alias           cpp -> Copy-ItemProperty
+Alias           cvpa -> Convert-Path
+Alias           dbp -> Disable-PSBreakpoint
+Alias           del -> Remove-Item
+Alias           diff -> Compare-Object
+Alias           dir -> Get-ChildItem
+Alias           dnsn -> Disconnect-PSSession
+Alias           ebp -> Enable-PSBreakpoint
+Alias           echo -> Write-Output
+Alias           epal -> Export-Alias
+Alias           epcsv -> Export-Csv
+Alias           erase -> Remove-Item
+Alias           etsn -> Enter-PSSession
+Alias           exsn -> Exit-PSSession
+Alias           fc -> Format-Custom
+Alias           fhx -> Format-Hex                                  7.0.0.0    Microsoft.PowerShell.Utility
+Alias           fl -> Format-List
+Alias           foreach -> ForEach-Object
+Alias           ft -> Format-Table
+Alias           fw -> Format-Wide
+Alias           gal -> Get-Alias
+Alias           gbp -> Get-PSBreakpoint
+Alias           gc -> Get-Content
+Alias           gcb -> Get-Clipboard                               7.0.0.0    Microsoft.PowerShell.Management
+Alias           gci -> Get-ChildItem
+Alias           gcm -> Get-Command
+Alias           gcs -> Get-PSCallStack
+Alias           gdr -> Get-PSDrive
+Alias           gerr -> Get-Error
+Alias           ghy -> Get-History
+Alias           gi -> Get-Item
+Alias           gin -> Get-ComputerInfo                            7.0.0.0    Microsoft.PowerShell.Management
+Alias           gjb -> Get-Job
+Alias           gl -> Get-Location
+Alias           gm -> Get-Member
+Alias           gmo -> Get-Module
+Alias           gp -> Get-ItemProperty
+Alias           gps -> Get-Process
+Alias           gpv -> Get-ItemPropertyValue
+Alias           group -> Group-Object
+Alias           gsn -> Get-PSSession
+Alias           gsv -> Get-Service
+Alias           gtz -> Get-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           gu -> Get-Unique
+Alias           gv -> Get-Variable
+Alias           h -> Get-History
+Alias           history -> Get-History
+Alias           icm -> Invoke-Command
+Alias           iex -> Invoke-Expression
+Alias           ihy -> Invoke-History
+Alias           ii -> Invoke-Item
+Alias           ipal -> Import-Alias
+Alias           ipcsv -> Import-Csv
+Alias           ipmo -> Import-Module
+Alias           irm -> Invoke-RestMethod
+Alias           iwr -> Invoke-WebRequest
+Alias           kill -> Stop-Process
+Alias           ls -> Get-ChildItem
+Alias           man -> help
+Alias           md -> mkdir
+Alias           measure -> Measure-Object
+Alias           mi -> Move-Item
+Alias           mount -> New-PSDrive
+Alias           move -> Move-Item
+Alias           mp -> Move-ItemProperty
+Alias           mv -> Move-Item
+Alias           nal -> New-Alias
+Alias           ndr -> New-PSDrive
+Alias           set -> Set-Variable
+Alias           shcm -> Show-Command
+Alias           si -> Set-Item
+Alias           sl -> Set-Location
+Alias           sleep -> Start-Sleep
+Alias           sls -> Select-String
+Alias           sort -> Sort-Object
+Alias           sp -> Set-ItemProperty
+Alias           spjb -> Stop-Job
+Alias           spps -> Stop-Process
+Alias           spsv -> Stop-Service
+Alias           start -> Start-Process
+Alias           stz -> Set-TimeZone                                7.0.0.0    Microsoft.PowerShell.Management
+Alias           sv -> Set-Variable
+Alias           tee -> Tee-Object
+Alias           type -> Get-Content
+Alias           where -> Where-Object
+Alias           wjb -> Wait-Job
+Alias           write -> Write-Output
+
+PS D:\GitLocalRepo> git --version
+git version 2.37.2.windows.2
+PS D:\GitLocalRepo>
